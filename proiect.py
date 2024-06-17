@@ -35,3 +35,26 @@ from machine import UART, Pin
           green_led.value(0)
           red_led1.value(0)
           green_led1.value(1)
+          
+   def cycle_states():
+      global running
+      while running:
+          next_state()
+          sleep(4)  # Adjust the sleep time to control the duration of each state
+
+  def control_lights(val):
+      global running
+      print(f"Control lights with val: {val}")
+      if 'start' in val:
+          if not running:
+              running = True
+              _thread.start_new_thread(cycle_states, ())
+          uart.write("Semafor start\n")
+      elif 'stop' in val:
+          running = False
+          current_state_index = 0
+          update_lights()
+          uart.write("stop\n")
+          sleep(4)
+
+  buffer = ""
