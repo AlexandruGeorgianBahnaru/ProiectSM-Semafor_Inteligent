@@ -8,6 +8,7 @@ Contribuitori
   - Bulgaru Vlad-Andrei (1307B) - 
 
 
+
 # Descrierea proiectului
 
 Proiectul prezintă un sistem de control al unui semafor inteligent, care combină elemente de software și hardware pentru a gestiona iluminarea LED-urilor și a primi comenzi din exterior. Sistemul utilizează un microcontroller Raspberry Pi, care rulează un cod Python pentru a controla LED-urile și a comunica cu exteriorul prin intermediul unui modul Bluetooth.
@@ -17,6 +18,41 @@ Proiectul prezintă un sistem de control al unui semafor inteligent, care combin
 Partea de software, scrisă în Python, gestionează iluminarea LED-urilor, controlul LED-urilor și primirea comenzilor prin Bluetooth. Sistemul permite utilizatorilor să trimită comenzi textuale de la telefon către Raspberry Pi prin conexiunea Bluetooth, pentru a controla funcționalitatea semaforului.
 
 În general, proiectul demonstrează cum se poate combina software-ul cu hardware-ul pentru a crea un sistem inteligent și interactiv, care poate fi utilizat în diverse aplicații, cum ar fi simularea unui semafor de trafic sau controlul unui sistem de iluminat.
+
+# Arhitectura sistemului
+
+Sistemul este construit pe baza a două componente principale: hardware și software.
+
+# Componentele hardware folosite în acest proiect sunt:
+
+Breadboard
+Raspberry Pi Pico H (microcontroller)
+Modulul Bluetooth HC-05
+LED-uri (roșu, galben și verde)
+Senzor infraroșu TCRT5000
+Cablu de alimentare și fire de conexiune
+Rezistențe de 330/220 Ω, 1kΩ
+
+# Componentele software folosite în acest proiect sunt:
+
+Codul Python care rulează pe Raspberry Pi Pico H
+Funcționalități software, cum ar fi configurarea pinilor GPIO, controlul semaforului și comunicarea Bluetooth
+
+# Software necesar:
+
+Programul Thonny pentru editarea codului și testare, disponibil pentru descărcare la link-ul acesta: https://thonny.org/
+
+Aplicația pentru Android, Serial Bluetooth Terminal, pentru a putea primi și transmite mesaje de la și spre semafor: https://play.google.com/store/apps/details?id=de.kai_morich.serial_bluetooth_terminal
+
+# Funcționalitatea
+
+Sistemul inteligent și interactiv a fost creat pentru a simula funcționalitatea unui semafor real. Funcționalitatea sistemului este împărțită în trei componente principale: controlul LED-urilor, comunicarea Bluetooth și controlul senzorului infraroșu.
+
+Controlul LED-urilor: Sistemul utilizează trei LED-uri bi-color (roșu, galben și verde) care sunt controlate de microcontrollerul Raspberry Pi. LED-urile sunt conectate la pini GPIO diferiți pentru a controla starea lor. Funcția update_lights() gestionează starea LED-urilor în funcție de starea curentă a semaforului.
+
+Comunicarea Bluetooth: Sistemul utilizează un modul Bluetooth pentru a primi comenzi externe. Comenzile sunt primite prin intermediul aplicației Serial Bluetooth Terminal și sunt procesate de microcontrollerul Raspberry Pi. Funcția control_lights() gestionează comenzile primite și controlează pornirea și oprirea semaforului.
+
+
 
 Configurare pini GPIO:
     
