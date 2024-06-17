@@ -74,3 +74,105 @@ Configurare pini GPIO:
 	  	GND: Conectat la GND al Raspberry Pi
 	 	TXD: Conectat la GPIO 1 al Raspberry Pi
 	  	RXD: Conectat la GPIO 0 al Raspberry Pi
+
+
+
+# Controlul LED-urilor
+
+Această parte a codului se ocupă de controlul LED-urilor, care reprezintă culorile semaforului (roșu, galben și verde). Funcția update_lights() actualizează starea LED-urilor în funcție de starea curentă a semaforului.
+```
+# Define the GPIO pins for the LEDs
+red_led = Pin(15, Pin.OUT)
+green_led = Pin(13, Pin.OUT)
+green_led1 = Pin(20, Pin.OUT)
+red_led1 = Pin(18, Pin.OUT)
+
+def update_lights():
+    global current_state_index
+    state = states[current_state_index]
+
+    if state == "r1r1":
+        red_led.value(1)
+        green_led.value(0)
+        red_led1.value(1)
+        green_led1.value(0)
+    elif state == "g1r1":
+        red_led.value(0)
+        green_led.value(1)
+        red_led1.value(1)
+        green_led1.value(0)
+    elif state == "g0r0":
+        red_led.value(1)
+        green_led.value(0)
+        red_led1.value(0)
+        green_led1.value(1)
+	
+```
+
+# Comunicarea Bluetooth
+
+Această parte a codului se ocupă de comunicarea Bluetooth, care permite primirea comenzilor externe pentru a controla semaforul. Funcția control_lights() gestionează comenzile primite și controlează pornirea și oprirea semaforului.
+
+```
+# Initialize the UART for Bluetooth communication
+uart = UART(0, baudrate=9600)
+
+def control_lights(val):
+    global running
+    print(f"Control lights with val: {val}")
+    if 'start' in val:
+        if not running:
+            running = True
+            _thread.start_new_thread(cycle_states, ())
+        uart.write("Semafor start\n")
+    elif 'stop' in val:
+        running = False
+        current_state_index = 0
+        update_lights()
+        uart.write("stop\n")
+        sleep(4)
+```
+
+# Ciclul de funcționare al semaforului
+
+Această parte a codului se ocupă de ciclul de funcționare al semaforului, care alternează între culorile roșu, galben și verde pentru a simula funcționarea unui semafor real. Funcția next_state() trece la următoarea stare a semaforului, în timp ce funcția cycle_states() controlează ciclul de funcționare al semaforului.
+
+```
+def next_state():
+    global current_state_index
+    current_state_index = (current_state_index + 1) % len(states)
+    update_lights()
+
+def cycle_states():
+    global running
+    while running:
+        next_state()
+        sleep(4)  # Adjust the sleep time to control the duration of each state
+```
+
+# Recepția comenzilor prin Bluetooth
+
+Această parte a codului se ocupă de recepția comenzilor prin Bluetooth, care permite controlul semaforului de la distanță.
+
+```
+buffer = ""
+while True:
+    if uart.any():
+        msg = uart.read(1).decode('utf-8')  # Read one byte at a time
+        if msg == '\n':  # End of message
+            buffer = buffer.strip()  # Remove any surrounding whitespace
+            if buffer:
+                print(f"Received message: {buffer}")  # Debugging statement
+                uart.write(buffer + "\n")  # Echo the received message for debugging
+
+                if 'start' in buffer:
+                    print("Start command received")  # Debugging statement
+                    control_lights(buffer)
+                elif 'stop' in buffer:
+                    print("Stop command received")  # Debugging statement
+                    control_lights(buffer)
+                    uart.write("val 0\n")
+            buffer = ""  # Clear the buffer for the next message
+    else:
+        sleep(0.1)  # Add a small delay to avoid busy-waiting
+```
