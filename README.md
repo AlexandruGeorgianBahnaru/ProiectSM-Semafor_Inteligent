@@ -18,8 +18,9 @@ Partea de software, scrisă în Python, gestionează iluminarea LED-urilor, cont
 
 În general, proiectul demonstrează cum se poate combina software-ul cu hardware-ul pentru a crea un sistem inteligent și interactiv, care poate fi utilizat în diverse aplicații, cum ar fi simularea unui semafor de trafic sau controlul unui sistem de iluminat.
 
-Configurare pini GPIO
-  LED-uri:
+Configurare pini GPIO:
+    
+    LED-uri:
   	-LED roșu:
 	  	Anod: Conectat la rezistență de 330Ω, apoi la GPIO 15 al Raspberry Pi	
 	  	Catod: Conectat la GND
@@ -32,8 +33,8 @@ Configurare pini GPIO
   	LED verde 2:
 	   	Anod: Conectat la rezistență de 330Ω, apoi la GPIO 20 al Raspberry Pi
 	  	Catod: Conectat la GND
-  Modulul Bluetooth HC-05:
-	  VCC: Conectat la VBUS al Raspberry Pi
-	  GND: Conectat la GND al Raspberry Pi
-	  TXD: Conectat la GPIO 1 al Raspberry Pi
-	  RXD: Conectat la GPIO 0 al Raspberry Pi
+    Modulul Bluetooth HC-05:
+	  	VCC: Conectat la VBUS al Raspberry Pi
+	  	GND: Conectat la GND al Raspberry Pi
+	 	TXD: Conectat la GPIO 1 al Raspberry Pi
+	  	RXD: Conectat la GPIO 0 al Raspberry Pi
