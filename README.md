@@ -25,18 +25,23 @@ Sistemul este construit pe baza a două componente principale: hardware și soft
 
 # Componentele hardware folosite în acest proiect sunt:
 
-Breadboard
-Raspberry Pi Pico H (microcontroller)
-Modulul Bluetooth HC-05
-LED-uri (roșu, galben și verde)
-Senzor infraroșu TCRT5000
-Cablu de alimentare și fire de conexiune
-Rezistențe de 330/220 Ω, 1kΩ
+->Breadboard
+
+->Raspberry Pi Pico H (microcontroller)
+
+->Modulul Bluetooth HC-05
+
+->LED-uri (roșu, galben și verde)
+
+->Cablu de alimentare și fire de conexiune
+
+->Rezistențe de 330/220 Ω, 1kΩ
 
 # Componentele software folosite în acest proiect sunt:
 
-Codul Python care rulează pe Raspberry Pi Pico H
-Funcționalități software, cum ar fi configurarea pinilor GPIO, controlul semaforului și comunicarea Bluetooth
+1. Codul Python care rulează pe Raspberry Pi Pico H
+
+2. Funcționalități software, cum ar fi configurarea pinilor GPIO, controlul semaforului și comunicarea Bluetooth
 
 # Software necesar:
 
