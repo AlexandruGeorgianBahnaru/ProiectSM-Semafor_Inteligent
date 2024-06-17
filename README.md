@@ -1,4 +1,4 @@
 # Proiect-semafor
 
-# AC
+# Descriere generală
 Universitatea Tehnică „Gheorghe Asachi” Iași
