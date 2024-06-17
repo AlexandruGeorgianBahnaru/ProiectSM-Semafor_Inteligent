@@ -57,4 +57,26 @@ from machine import UART, Pin
           uart.write("stop\n")
           sleep(4)
 
-  buffer = ""
+
+buffer = ""
+while True:
+    if uart.any():
+        msg = uart.read(1).decode('utf-8')  # Read one byte at a time
+        if msg == '\n':  # End of message
+            buffer = buffer.strip()  # Remove any surrounding whitespace
+            if buffer:
+                print(f"Received message: {buffer}")  # Debugging statement
+                uart.write(buffer + "\n")  # Echo the received message for debugging
+
+                if 'start' in buffer:
+                    print("Start command received")  # Debugging statement
+                    control_lights(buffer)
+                elif 'stop' in buffer:
+                    print("Stop command received")  # Debugging statement
+                    control_lights(buffer)
+                    uart.write("val 0\n")
+            buffer = ""  # Clear the buffer for the next message
+        else:
+            buffer += msg  # Append byte to buffer
+    else:
+        sleep(0.1)  # Add a small delay to avoid busy-waiting
