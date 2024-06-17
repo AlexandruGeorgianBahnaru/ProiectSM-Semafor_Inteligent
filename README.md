@@ -176,3 +176,6 @@ while True:
     else:
         sleep(0.1)  # Add a small delay to avoid busy-waiting
 ```
+
+![image](https://media.github.tuiasi.ro/user/242/files/c2e27a40-e3e1-4f0b-a3c3-e7673e3868f7)
+![image](https://media.github.tuiasi.ro/user/242/files/567fceb0-e470-45b0-9e8e-96860c8e6a3e)
