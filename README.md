@@ -8,7 +8,7 @@ Contribuitori
   - Bulgaru Vlad-Andrei (1307B) - 
 
 
-Descrierea proiectului
+# Descrierea proiectului
 
 Proiectul prezintă un sistem de control al unui semafor inteligent, care combină elemente de software și hardware pentru a gestiona iluminarea LED-urilor și a primi comenzi din exterior. Sistemul utilizează un microcontroller Raspberry Pi, care rulează un cod Python pentru a controla LED-urile și a comunica cu exteriorul prin intermediul unui modul Bluetooth.
 
