@@ -183,4 +183,17 @@ while True:
 ```
 
 ![image](https://media.github.tuiasi.ro/user/242/files/c2e27a40-e3e1-4f0b-a3c3-e7673e3868f7)
+
 ![image](https://media.github.tuiasi.ro/user/242/files/567fceb0-e470-45b0-9e8e-96860c8e6a3e)
+
+![image](https://media.github.tuiasi.ro/user/221/files/571fc6ad-baea-4741-8f2f-847d55af3f23)
+
+![image](https://media.github.tuiasi.ro/user/221/files/1cd6c97d-0fae-4195-83d7-53f75db08ab3)
+
+![image](https://media.github.tuiasi.ro/user/221/files/cd829353-502c-4195-a9f4-568815d472f3)
+
+# Concluzie
+
+Proiectul de semafor pentru o intersecție cu două semafoare demonstrează eficient integrarea între componentele hardware și software pentru a crea un sistem inteligent și interactiv. Utilizând un microcontroller Raspberry Pi Pico H și LED-uri bicolore, proiectul reușește să simuleze funcționarea unui semafor real, oferind control complet printr-o conexiune Bluetooth. Prin această combinație de tehnologie, am realizat un sistem funcțional care poate fi extins și adaptat pentru diverse aplicații practice, îmbunătățind astfel siguranța și gestionarea traficului într-o intersecție. Implementarea unui astfel de sistem demonstrează potențialul tehnologiei moderne de a crea soluții eficiente și accesibile pentru problemele cotidiene.
+
+
